@@ -1,6 +1,6 @@
 # أعمال BAIT PAIT
 
-الكتالوج في `src/lib/works.ts`. كل بطاقة تعرض `cover` من `public/works/`. الحقل `notification` جاهز لصور إشعارات لاحقة ولم يُملأ بعد.
+البذرة الأولية في `src/lib/works.ts`. المعرض الحي يُقرأ من `data/works.json` بعد أول تشغيل أو بعد الحفظ من `/admin/works`. كل بطاقة تعرض `cover` من `public/works/`. الحقل `notification` جاهز لصور إشعارات لاحقة ولم يُملأ بعد.
 
 الفلاتر في الواجهة: الكل، طعام ومشروب (`food`)، الإنتاجية (`productivity`)، نمط حياة (`lifestyle`)، أعمال (`business`).
 

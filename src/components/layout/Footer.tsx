@@ -3,7 +3,7 @@ import { NAV_LINKS } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 py-16">
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#0b0616]/40 py-16 backdrop-blur-2xl">
       <p className="holo-title pointer-events-none absolute inset-x-0 top-6 text-center text-[18vw] font-black leading-none opacity-20">
         BAIT PAIT
       </p>
@@ -24,6 +24,9 @@ export function Footer() {
             </a>
           ))}
         </nav>
+        <a href="/admin" className="text-xs text-[#64748B] hover:text-white">
+          لوحة التحكم
+        </a>
         <p className="font-latin text-xs text-ink-mute">
           © {new Date().getFullYear()} BAIT PAIT. All rights reserved.
         </p>

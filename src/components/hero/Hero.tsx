@@ -5,27 +5,28 @@ import { ArrowLeft, Sparkles } from "lucide-react";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { HeroScene } from "./HeroScene";
+import { DEFAULT_SETTINGS, type SiteSettings } from "@/lib/site-defaults";
 
-export function Hero() {
+export function Hero({ settings = DEFAULT_SETTINGS }: { settings?: SiteSettings }) {
   return (
-    <section id="home" className="relative overflow-hidden bg-[#0b0616]">
+    <section id="home" className="relative overflow-hidden bg-transparent">
       <div className="mx-auto grid min-h-[100svh] max-w-7xl items-center gap-8 px-4 pb-12 pt-28 md:px-6 lg:grid-cols-2 lg:gap-12 lg:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           className="order-1 text-right"
         >
-          <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#8B5CF6]/45 bg-[#8B5CF6]/15 px-3 py-1 text-xs font-semibold text-[#C084FC] shadow-[0_0_22px_rgba(139,92,246,0.4)]">
+          <span className="glass-chip mb-5 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-[#C084FC] shadow-[0_0_22px_rgba(139,92,246,0.4)]">
             <Sparkles className="h-3.5 w-3.5" />
-            Al-Bastanji Software Solutions & Training
+            {settings.badge}
           </span>
 
           <h1 className="hero-title text-4xl font-black leading-[1.35] md:text-5xl xl:text-[3.35rem]">
-            شركة البستنجي للحلول البرمجية والتدريب
+            {settings.companyTitle}
           </h1>
 
           <p className="mt-5 max-w-xl text-base leading-relaxed text-[#E2E8F0] md:text-lg">
-            نصنع الحلول الرقمية التي تبني المستقبل.
+            {settings.slogan}
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -43,7 +44,7 @@ export function Hero() {
           </div>
 
           <TiltCard className="group mt-8 max-w-xl">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-xl">
+            <div className="glass rounded-2xl p-4">
               <div className="flex flex-wrap gap-2">
                 <span className="rounded-full bg-[#8B5CF6]/20 px-3 py-1 text-xs font-bold text-[#E9D5FF]">
                   رؤيتنا | Vision
@@ -55,10 +56,8 @@ export function Hero() {
                   كلمة المؤسس
                 </span>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-[#E2E8F0]">
-                أن نكون البيت الرقمي الأول، بحلول مبتكرة وتدريب احترافي.
-              </p>
-              <p className="mt-2 text-xs text-[#94A3B8]">م. مصطفى البستنجي</p>
+              <p className="mt-3 text-sm leading-relaxed text-[#E2E8F0]">{settings.vision}</p>
+              <p className="mt-2 text-xs text-[#94A3B8]">{settings.founderName}</p>
             </div>
           </TiltCard>
         </motion.div>
@@ -71,6 +70,10 @@ export function Hero() {
         >
           <div className="relative h-[min(58vh,500px)] lg:h-[min(78vh,640px)]">
             <HeroScene />
+            <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0b0616] to-transparent" />
+            <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0b0616] to-transparent" />
+            <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#0b0616] to-transparent" />
+            <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0b0616] to-transparent" />
           </div>
         </motion.div>
       </div>

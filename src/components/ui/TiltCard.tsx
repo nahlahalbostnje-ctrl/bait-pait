@@ -18,9 +18,9 @@ export function TiltCard({
     const r = el.getBoundingClientRect();
     const x = (e.clientX - r.left) / r.width;
     const y = (e.clientY - r.top) / r.height;
-    const rx = (0.5 - y) * 22;
-    const ry = (x - 0.5) * 26;
-    el.style.transform = `perspective(1100px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(18px) scale3d(1.03,1.03,1.03)`;
+    const rx = (0.5 - y) * 16;
+    const ry = (x - 0.5) * 20;
+    el.style.transform = `perspective(1400px) rotateX(${rx}deg) rotateY(${ry}deg) translateZ(28px) scale3d(1.025,1.025,1.025)`;
     el.style.setProperty("--mx", `${x * 100}%`);
     el.style.setProperty("--my", `${y * 100}%`);
   }
@@ -40,10 +40,10 @@ export function TiltCard({
       style={{ transformStyle: "preserve-3d" }}
     >
       <div
-        className="pointer-events-none absolute inset-0 z-10 rounded-[inherit] opacity-0 mix-blend-screen transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 z-10 rounded-[inherit] opacity-40 mix-blend-screen transition-opacity duration-300 group-hover:opacity-100"
         style={{
           background:
-            "radial-gradient(520px circle at var(--mx,50%) var(--my,50%), rgba(192,132,252,0.28), transparent 42%)",
+            "radial-gradient(460px circle at var(--mx,50%) var(--my,50%), rgba(255,255,255,0.28), rgba(192,132,252,0.16) 28%, transparent 52%)",
         }}
       />
       {children}

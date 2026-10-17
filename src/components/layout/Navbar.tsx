@@ -10,7 +10,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-3 top-3 z-50 rounded-2xl border border-white/10 bg-[#0b0616]/80 backdrop-blur-md md:inset-x-6">
+    <header className="glass-strong fixed inset-x-3 top-3 z-50 rounded-2xl md:inset-x-6">
       <div className="relative mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between px-4 md:px-6">
         <a href="#home" className="relative z-10 flex items-center gap-3">
           <Logo />

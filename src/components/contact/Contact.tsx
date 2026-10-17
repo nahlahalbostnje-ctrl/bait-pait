@@ -2,25 +2,18 @@
 
 import { FormEvent, useState } from "react";
 import { Check, Copy, Facebook, Mail, MapPin, MessageCircle } from "lucide-react";
-import {
-  EMAIL,
-  FACEBOOK,
-  LOCATION,
-  MAPS_URL,
-  PHONE_DISPLAY,
-  PHONE_WHATSAPP,
-} from "@/lib/constants";
+import { DEFAULT_SETTINGS, type SiteSettings } from "@/lib/site-defaults";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { NeonButton } from "@/components/ui/NeonButton";
 import { TiltCard } from "@/components/ui/TiltCard";
 
-export function Contact() {
+export function Contact({ settings = DEFAULT_SETTINGS }: { settings?: SiteSettings }) {
   const [copied, setCopied] = useState(false);
   const [status, setStatus] = useState<"idle" | "ok" | "err">("idle");
   const [loading, setLoading] = useState(false);
 
   async function copyEmail() {
-    await navigator.clipboard.writeText(EMAIL);
+    await navigator.clipboard.writeText(settings.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 1600);
   }
@@ -60,7 +53,7 @@ export function Contact() {
           <div className="grid gap-4 sm:grid-cols-2">
             <TiltCard className="group sm:col-span-2">
               <a
-                href={`https://wa.me/${PHONE_WHATSAPP}`}
+                href={`https://wa.me/${settings.phoneWhatsapp}`}
                 target="_blank"
                 rel="noreferrer"
                 className="glass flex items-center gap-4 rounded-3xl p-5"
@@ -71,7 +64,7 @@ export function Contact() {
                 <div>
                   <p className="text-sm text-ink-mute">الهاتف / واتساب</p>
                   <p className="font-latin font-bold text-white" dir="ltr">
-                    {PHONE_DISPLAY}
+                    {settings.phoneDisplay}
                   </p>
                 </div>
               </a>
@@ -84,47 +77,50 @@ export function Contact() {
                 </span>
                 <div>
                   <p className="text-sm text-ink-mute">البريد الإلكتروني</p>
-                  <p className="font-latin text-sm font-bold text-white">{EMAIL}</p>
+                  <p className="font-latin text-sm font-bold text-white">{settings.email}</p>
                   <p className="mt-1 text-xs text-glow-cyan">{copied ? "تم النسخ" : "انسخ بسرعة"}</p>
                 </div>
               </button>
             </TiltCard>
 
             <TiltCard className="group">
-              <a href={MAPS_URL} target="_blank" rel="noreferrer" className="glass flex h-full items-start gap-3 rounded-3xl p-5">
+              <a href={settings.mapsUrl} target="_blank" rel="noreferrer" className="glass flex h-full items-start gap-3 rounded-3xl p-5">
                 <span className="rounded-2xl bg-glow-cyan/20 p-3 text-glow-cyan">
                   <MapPin />
                 </span>
                 <div>
                   <p className="text-sm text-ink-mute">الموقع الجغرافي</p>
-                  <p className="font-bold text-white">{LOCATION}</p>
+                  <p className="font-bold text-white">{settings.location}</p>
                 </div>
               </a>
             </TiltCard>
 
             <TiltCard className="group sm:col-span-2">
-              <a href={FACEBOOK} target="_blank" rel="noreferrer" className="glass flex items-center gap-4 rounded-3xl p-5">
+              <a href={settings.facebook} target="_blank" rel="noreferrer" className="glass flex items-center gap-4 rounded-3xl p-5">
                 <span className="rounded-2xl bg-blue-500/20 p-3 text-blue-300">
                   <Facebook />
                 </span>
                 <div>
                   <p className="text-sm text-ink-mute">فيسبوك</p>
-                  <p className="font-latin text-sm text-white">facebook.com/PAITBAITCOM</p>
+                  <p className="font-latin text-sm text-white">{settings.facebook.replace("https://", "")}</p>
                 </div>
               </a>
             </TiltCard>
 
-            <div className="glass overflow-hidden rounded-3xl sm:col-span-2">
+            <div className="glass map-frame overflow-hidden rounded-3xl sm:col-span-2">
               <iframe
                 title="خريطة دورا الخليل"
-                className="h-52 w-full grayscale contrast-125 invert-[.88]"
+                className="map-embed h-56 w-full border-0"
                 loading="lazy"
                 src="https://maps.google.com/maps?q=Dura%20Hebron%20Palestine&t=&z=13&ie=UTF8&iwloc=&output=embed"
               />
+              <div className="pointer-events-none absolute bottom-3 right-3 rounded-full border border-white/40 bg-white/85 px-3 py-1 text-xs font-semibold text-[#4C1D95] backdrop-blur-md">
+                دورا — الخليل
+              </div>
             </div>
           </div>
 
-          <form onSubmit={onSubmit} className="neu-inset rounded-3xl p-6">
+          <form onSubmit={onSubmit} className="glass rounded-3xl p-6">
             <div className="mb-4 flex items-center gap-2 text-ink-soft">
               <Mail className="h-5 w-5 text-glow-lilac" />
               <h3 className="font-bold text-white">أرسل رسالتك</h3>

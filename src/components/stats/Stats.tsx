@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TiltCard } from "@/components/ui/TiltCard";
+import type { SiteStat } from "@/lib/site-defaults";
 
-const stats = [
+const defaultStats: SiteStat[] = [
   { value: 400, suffix: "+", label: "مشروع منجز بنجاح" },
   { value: 100, suffix: "+", label: "مؤسسة ونظام يعمل بكفاءة" },
   { value: 13, suffix: "", label: "سنة من الخبرة المتراكمة" },
@@ -46,13 +47,13 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
   );
 }
 
-export function Stats() {
+export function Stats({ items = defaultStats }: { items?: SiteStat[] }) {
   return (
     <section className="py-16">
       <div className="mx-auto max-w-7xl px-4 md:px-6">
         <SectionHeading kicker="الإنجازات" title="أرقام تضيء مسيرة أكثر من عقد" />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((s) => (
+          {items.map((s) => (
             <TiltCard key={s.label} className="group">
               <div className="glass rounded-[1.7rem] p-7 text-center shadow-glow">
                 <Counter value={s.value} suffix={s.suffix} />

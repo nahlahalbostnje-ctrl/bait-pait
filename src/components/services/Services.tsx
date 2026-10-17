@@ -36,7 +36,7 @@ function Column({
           {items.map((item, i) => (
             <li key={item.title}>
               <TiltCard className="group">
-                <div className="flex items-center gap-3 rounded-2xl bg-[#1A0F35] px-3 py-3">
+                <div className="glass-chip flex items-center gap-3 rounded-2xl px-3 py-3">
                   <ClayIcon icon={item.icon} index={i} className="mb-0 h-12 w-12" />
                   <span className="text-base font-bold text-white">{item.title}</span>
                 </div>
@@ -53,7 +53,7 @@ export function Services() {
   return (
     <section id="services" className="relative py-20">
       <div className="mx-auto max-w-5xl px-4 md:px-6">
-        <div className="mx-auto max-w-xl rounded-[1.6rem] border border-white/15 bg-[#1A0F35] px-6 py-5 text-center shadow-glow">
+        <div className="glass mx-auto max-w-xl rounded-[1.6rem] px-6 py-5 text-center shadow-glow">
           <p className="text-xs text-[#C084FC]">القسم 4 · Dual Services Arena</p>
           <h2 className="mt-1 text-3xl font-black text-white">ساحة الخدمات المزدوجة</h2>
         </div>

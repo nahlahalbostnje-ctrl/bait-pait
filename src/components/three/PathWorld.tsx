@@ -51,7 +51,12 @@ function Helix() {
 
 export function PathWorld() {
   return (
-    <Canvas camera={{ position: [0, 0.15, 5.6], fov: 42 }} dpr={[1, 1.5]}>
+    <Canvas
+      camera={{ position: [0, 0.15, 5.6], fov: 42 }}
+      dpr={[1, 1.5]}
+      gl={{ antialias: true, alpha: false }}
+      style={{ width: "100%", height: "100%", background: "#0A0612" }}
+    >
       <color attach="background" args={["#0A0612"]} />
       <ambientLight intensity={0.4} />
       <pointLight position={[3, 2, 4]} intensity={30} color="#8B5CF6" />

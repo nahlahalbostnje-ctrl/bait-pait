@@ -66,12 +66,16 @@ export function Methodology() {
           subtitle="مسار مداري حلزوني بست محطات متسلسلة من الاكتشاف حتى الإطلاق والتدريب."
         />
 
-        <div className="mb-4 h-[280px] overflow-hidden rounded-[2rem] glass neon-border md:h-[340px]">
+        <div className="relative mb-4 h-[280px] overflow-hidden md:h-[340px]">
           <PathWorld />
+          <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#0A0612] to-transparent" />
+          <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#0A0612] to-transparent" />
+          <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#0A0612] to-transparent" />
+          <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0A0612] to-transparent" />
         </div>
         <div className="mb-10 flex flex-wrap justify-center gap-2">
           {steps.map((step) => (
-            <span key={step.n} className="rounded-full bg-[#1A0F35] px-3 py-1 text-xs text-[#E2E8F0]">
+            <span key={step.n} className="glass-chip rounded-full px-3 py-1 text-xs text-[#E2E8F0]">
               {step.n} {step.title}
             </span>
           ))}

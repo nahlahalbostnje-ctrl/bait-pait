@@ -17,7 +17,7 @@ export function SectionHeading({
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-3 inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-medium tracking-wide text-glow-lilac"
+        className="glass-chip mb-3 inline-flex rounded-full px-4 py-1 text-xs font-medium tracking-wide text-glow-lilac"
       >
         {kicker}
       </motion.span>

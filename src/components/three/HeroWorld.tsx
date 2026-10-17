@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { ContactShadows, Float, Grid, MeshDistortMaterial, RoundedBox } from "@react-three/drei";
+import { Float, MeshDistortMaterial, RoundedBox } from "@react-three/drei";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import { makeAiScreen, makeCodePanel, makeHoloScreen } from "./screenTextures";
@@ -84,7 +84,7 @@ function HoloCore() {
 
   return (
     <group position={[0, 0.92, 0]}>
-      <sprite scale={[2.6, 2.6, 1]}>
+      <sprite scale={[2.15, 2.15, 1]}>
         <spriteMaterial map={sprite} transparent depthWrite={false} blending={THREE.AdditiveBlending} />
       </sprite>
       <mesh>
@@ -132,23 +132,26 @@ function GlassDashboard({ map }: { map: THREE.Texture }) {
       <group position={[0.55, -0.42, 1.05]} rotation={[-0.62, 0.78, 0.18]}>
         <RoundedBox args={[2.55, 1.55, 0.08]} radius={0.07} smoothness={8}>
           <meshPhysicalMaterial
-            color="#1e1140"
-            metalness={0.95}
-            roughness={0.06}
+            color="#dbeafe"
+            metalness={0.08}
+            roughness={0.05}
             transparent
-            opacity={0.32}
+            opacity={0.22}
             clearcoat={1}
-            clearcoatRoughness={0.04}
+            clearcoatRoughness={0.03}
             reflectivity={1}
+            iridescence={1}
+            iridescenceIOR={1.25}
+            ior={1.48}
           />
         </RoundedBox>
         <mesh position={[0, 0, 0.048]}>
           <planeGeometry args={[2.28, 1.32]} />
-          <meshBasicMaterial map={map} toneMapped={false} transparent opacity={0.92} />
+          <meshBasicMaterial map={map} toneMapped={false} transparent opacity={0.78} />
         </mesh>
-        <mesh position={[0, 0, 0.052]}>
+        <mesh position={[0, 0, 0.054]}>
           <planeGeometry args={[2.32, 1.36]} />
-          <meshBasicMaterial color="#67e8f9" transparent opacity={0.08} toneMapped={false} />
+          <meshBasicMaterial color="#e0f2fe" transparent opacity={0.12} toneMapped={false} />
         </mesh>
       </group>
     </Float>
@@ -162,12 +165,14 @@ function FloatingPanels({ code, holo }: { code: THREE.Texture; holo: THREE.Textu
         <group position={[-1.75, 0.62, 0.55]} rotation={[-0.28, 0.72, -0.12]}>
           <RoundedBox args={[1.18, 0.74, 0.04]} radius={0.045}>
             <meshPhysicalMaterial
-              color="#1a0b33"
+              color="#e0e7ff"
               transparent
-              opacity={0.28}
-              metalness={0.85}
-              roughness={0.08}
+              opacity={0.2}
+              metalness={0.1}
+              roughness={0.06}
               clearcoat={1}
+              iridescence={0.8}
+              ior={1.45}
             />
           </RoundedBox>
           <mesh position={[0, 0, 0.025]}>
@@ -180,12 +185,14 @@ function FloatingPanels({ code, holo }: { code: THREE.Texture; holo: THREE.Textu
         <group position={[1.7, 1.22, 0.05]} rotation={[-0.22, -0.68, 0.14]}>
           <RoundedBox args={[1.08, 0.6, 0.04]} radius={0.045}>
             <meshPhysicalMaterial
-              color="#1a0b33"
+              color="#e0e7ff"
               transparent
-              opacity={0.26}
-              metalness={0.85}
-              roughness={0.08}
+              opacity={0.2}
+              metalness={0.1}
+              roughness={0.06}
               clearcoat={1}
+              iridescence={0.8}
+              ior={1.45}
             />
           </RoundedBox>
           <mesh position={[0, 0, 0.025]}>
@@ -235,35 +242,22 @@ export function HeroWorld() {
     <Canvas
       camera={{ position: [3.45, 2.2, 5.15], fov: 34 }}
       dpr={[1, 1.6]}
-      gl={{ antialias: true, alpha: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.25 }}
-      style={{ width: "100%", height: "100%", background: "transparent" }}
+      gl={{ antialias: true, alpha: false, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.25 }}
+      style={{ width: "100%", height: "100%", background: "#0b0616" }}
     >
+      <color attach="background" args={["#0b0616"]} />
       <fog attach="fog" args={["#0b0616", 10, 20]} />
       <ambientLight intensity={0.12} />
       <pointLight position={[-2.15, 2.55, 2.8]} intensity={90} color="#8B5CF6" distance={14} />
       <pointLight position={[2.45, 2.1, 2.5]} intensity={90} color="#06B6D4" distance={14} />
       <pointLight position={[0, 3.2, -1.2]} intensity={28} color="#C084FC" />
       <spotLight position={[3, 6, 4]} angle={0.42} intensity={40} color="#8B5CF6" penumbra={0.8} />
-      <Grid
-        args={[18, 18]}
-        cellSize={0.4}
-        cellThickness={0.55}
-        cellColor="#3b0764"
-        sectionSize={2}
-        sectionThickness={1}
-        sectionColor="#06b6d4"
-        fadeDistance={14}
-        fadeStrength={1.2}
-        infiniteGrid
-        position={[0, -1.05, 0]}
-      />
       <MouseRig>
         <HoloCore />
         <GlassDashboard map={dash} />
         <FloatingPanels code={code} holo={holo} />
         <Crystals />
       </MouseRig>
-      <ContactShadows opacity={0.4} scale={12} blur={2.8} far={5} color="#1e1040" />
     </Canvas>
   );
 }

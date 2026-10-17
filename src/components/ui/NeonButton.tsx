@@ -22,7 +22,7 @@ export function NeonButton({
 }: Props) {
   const styles =
     variant === "primary"
-      ? `bg-gradient-to-l from-brand to-brand-light text-white shadow-glow ${pulse ? "pulse-glow" : ""}`
+      ? `border border-white/20 bg-gradient-to-l from-brand to-brand-light text-white shadow-glow ${pulse ? "pulse-glow" : ""}`
       : "glass text-white hover:bg-white/10";
 
   const cls = `inline-flex items-center justify-center gap-2 rounded-2xl px-6 py-3 text-sm font-bold transition duration-300 hover:-translate-y-0.5 ${styles} ${className}`;

@@ -13,7 +13,7 @@ const HeroWorld = dynamic(() => import("@/components/three/HeroWorld").then((m) 
 
 export function HeroScene() {
   return (
-    <div className="absolute inset-0 h-full w-full">
+    <div className="absolute inset-0 h-full w-full overflow-visible">
       <HeroWorld />
     </div>
   );
