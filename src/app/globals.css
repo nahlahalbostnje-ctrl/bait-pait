@@ -33,6 +33,11 @@ body {
   color: #fff;
 }
 
+.hero-world-blend {
+  -webkit-mask-image: radial-gradient(ellipse 78% 74% at 48% 50%, #000 34%, rgba(0, 0, 0, 0.72) 58%, transparent 86%);
+  mask-image: radial-gradient(ellipse 78% 74% at 48% 50%, #000 34%, rgba(0, 0, 0, 0.72) 58%, transparent 86%);
+}
+
 .glass {
   background:
     linear-gradient(125deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 26%, rgba(18, 9, 36, 0.38) 100%),

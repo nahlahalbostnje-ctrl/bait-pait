@@ -242,11 +242,18 @@ export function HeroWorld() {
     <Canvas
       camera={{ position: [3.45, 2.2, 5.15], fov: 34 }}
       dpr={[1, 1.6]}
-      gl={{ antialias: true, alpha: false, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.25 }}
-      style={{ width: "100%", height: "100%", background: "#0b0616" }}
+      gl={{
+        antialias: true,
+        alpha: true,
+        premultipliedAlpha: true,
+        toneMapping: THREE.ACESFilmicToneMapping,
+        toneMappingExposure: 1.25,
+      }}
+      onCreated={({ gl }) => {
+        gl.setClearColor(0x000000, 0);
+      }}
+      style={{ width: "100%", height: "100%", background: "transparent" }}
     >
-      <color attach="background" args={["#0b0616"]} />
-      <fog attach="fog" args={["#0b0616", 10, 20]} />
       <ambientLight intensity={0.12} />
       <pointLight position={[-2.15, 2.55, 2.8]} intensity={90} color="#8B5CF6" distance={14} />
       <pointLight position={[2.45, 2.1, 2.5]} intensity={90} color="#06B6D4" distance={14} />

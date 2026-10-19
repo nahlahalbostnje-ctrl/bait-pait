@@ -68,12 +68,10 @@ export function Hero({ settings = DEFAULT_SETTINGS }: { settings?: SiteSettings 
           transition={{ delay: 0.1 }}
           className="order-2"
         >
-          <div className="relative h-[min(58vh,500px)] lg:h-[min(78vh,640px)]">
-            <HeroScene />
-            <div aria-hidden className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0b0616] to-transparent" />
-            <div aria-hidden className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0b0616] to-transparent" />
-            <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[#0b0616] to-transparent" />
-            <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0b0616] to-transparent" />
+          <div className="relative h-[min(62vh,540px)] lg:-mx-6 lg:h-[min(88vh,740px)]">
+            <div className="hero-world-blend absolute inset-0">
+              <HeroScene />
+            </div>
           </div>
         </motion.div>
       </div>
